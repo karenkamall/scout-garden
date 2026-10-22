@@ -1,0 +1,616 @@
+/* ===== استيراد خطوط مميزة ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@500;700&display=swap');
+
+:root {
+  --pink-light: #FFE4E1;
+  --pink-medium: #FFB6C1;
+  --pink-dark: #D81B60;
+  --sage: #2E7D32;
+  --sage-light: #A5D6A7;
+  --cream: #FAF8ED;
+  --text-dark: #1C2D24;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  background-color: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+h1, h2, h3 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 700;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--cream);
+}
+
+/* ===== Garden Header (تم تقليل المسافات لرفع الجنينة) ===== */
+.garden-header {
+  background: rgba(250, 248, 237, 0.9);
+  padding: 0.6rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.garden-title {
+  font-size: 1.8rem;
+  color: #1B5E20;
+  margin-bottom: 0.1rem;
+  font-weight: 800;
+}
+
+.garden-subtitle {
+  font-size: 0.95rem;
+  color: #388E3C;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+/* ===== Garden Main Container ===== */
+.garden-main {
+  flex: 1;
+  position: relative;
+  min-height: calc(100vh - 110px);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.garden-container {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 110px);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.garden-ground {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 110px);
+  position: relative;
+  background-color: var(--cream);
+  overflow: hidden;
+}
+
+/* التلة العشبية الواسعة مرفوعة للأعلى بالقرب من العنوان مباشرة */
+.garden-ground::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 86%;
+  max-width: 1200px;
+  max-height: 750px;
+  background: radial-gradient(ellipse at 35% 35%, #7CB342 0%, #558B2F 55%, #33691E 100%);
+  border-radius: 46% 54% 44% 56% / 52% 48% 52% 48%;
+  box-shadow: 
+    0 35px 0 #2E4C18,
+    0 55px 25px rgba(0, 0, 0, 0.15),
+    inset 0 20px 35px rgba(255, 255, 255, 0.25);
+  z-index: 1;
+}
+
+.garden-ground::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 93%;
+  height: 83%;
+  max-width: 1160px;
+  max-height: 720px;
+  border-radius: 46% 54% 44% 56% / 52% 48% 52% 48%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 2px, transparent 3px),
+    radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.1) 2px, transparent 3px),
+    radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.12) 3px, transparent 4px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ===== Flowers in Garden ===== */
+.flower-in-garden {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.flower-in-garden .flower-inner {
+  animation: gentleSway 5s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes gentleSway {
+  0% { transform: rotate(-2.5deg); }
+  100% { transform: rotate(2.5deg); }
+}
+
+.flower-in-garden .flower-visual,
+.flower-visual-svg {
+  width: 80px;
+  height: 100px;
+  background: transparent;
+  margin-bottom: 0;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.18));
+}
+
+.flower-shadow {
+  width: 45px;
+  height: 10px;
+  background: rgba(30, 60, 20, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  bottom: -2px;
+  filter: blur(3px);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.flower-in-garden:hover {
+  transform: translateY(-8px) scale(1.15) !important;
+  z-index: 999 !important;
+}
+
+.flower-in-garden:hover .flower-shadow {
+  transform: scale(0.6);
+  opacity: 0.2;
+}
+
+.flower-label {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #2E7D32;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #C8E6C9;
+  opacity: 0.95;
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.flower-in-garden:hover .flower-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(2px);
+  background: #FFFFFF;
+}
+
+/* ===== النجمة في أعلى اليمين بارزة فوق الزهرة ===== */
+.bloom-badge {
+  position: absolute;
+  top: -16px;
+  right: -10px;
+  font-size: 1.8rem;
+  z-index: 100 !important;
+  animation: sparkle 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px gold);
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.8; transform: scale(1.25) rotate(15deg); }
+}
+
+/* ===== Add Flower Button ===== */
+.add-flower-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 100;
+}
+
+.add-flower-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
+}
+
+/* ===== General Modals ===== */
+.modal-overlay, .girl-profile-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(28, 45, 36, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+  backdrop-filter: blur(4px);
+}
+
+.modal, .girl-profile {
+  background: white;
+  padding: 2.2rem;
+  border-radius: 24px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+  animation: popIn 0.3s ease-out;
+  position: relative;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal h2 {
+  color: #2E7D32;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+/* ===== Form Controls ===== */
+.form-group {
+  margin-bottom: 1.4rem;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #2E7D32;
+  font-size: 0.95rem;
+}
+
+.form-group input, 
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem;
+  border: 2px solid #C8E6C9;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: #1C2D24;
+  background: #FAFAFA;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2E7D32;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.modal-actions button {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.modal-actions button:first-child,
+.modal-actions .cancel-btn {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.modal-actions .submit-btn {
+  background: #2E7D32;
+  color: white;
+}
+
+.modal-actions button:hover {
+  transform: scale(1.04);
+}
+
+/* ===== صندوق معاينة الزهرة الكاملة في التخصيص ===== */
+.customize-modal {
+  max-width: 520px;
+  padding: 2rem;
+}
+
+.customize-preview {
+  width: 100%;
+  min-height: 240px;
+  background: radial-gradient(circle, #F1F8E9 0%, #E8F5E9 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  border: 2px dashed #A5D6A7;
+  overflow: visible;
+  padding: 1.5rem;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.customize-preview > div,
+.customize-preview svg,
+.customize-preview img,
+.customize-preview .flower-visual {
+  width: 100% !important;
+  max-width: 180px !important;
+  height: 200px !important;
+  max-height: 200px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));
+}
+
+.customize-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.option-group label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2E7D32;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch.selected {
+  transform: scale(1.22);
+  border: 2px solid #2E7D32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.3);
+}
+
+.toggle-options {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.toggle-btn {
+  background: #F1F8E9;
+  border: 1.5px solid #C8E6C9;
+  color: #2E7D32;
+  padding: 0.65rem 1.3rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: #E8F5E9;
+}
+
+.toggle-btn.active {
+  background: #2E7D32;
+  color: white;
+  border-color: #2E7D32;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.25);
+}
+
+/* ===== Customize Button In Profile ===== */
+.customize-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #8E24AA 0%, #AB47BC 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 4px 14px rgba(142, 36, 170, 0.3);
+  transition: all 0.25s ease;
+}
+
+.customize-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(142, 36, 170, 0.4);
+}
+
+/* ===== Girl Profile Modal ===== */
+.profile-name {
+  font-size: 1.9rem;
+  color: #2E7D32;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #2E7D32;
+}
+
+.profile-flower {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F1F8E9;
+  border-radius: 18px;
+  margin-bottom: 1.5rem;
+}
+
+.caption-box {
+  background: #FFFDE7;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  text-align: center;
+  border: 1.5px dashed #C8E6C9;
+}
+
+.attendance-count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2E7D32;
+  display: block;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 18px;
+  background: #E8F5E9;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.3rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #81C784 0%, #2E7D32 100%);
+  transition: width 0.5s ease;
+}
+
+.water-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #4FC3F7 0%, #0288D1 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 4px 12px rgba(2, 136, 209, 0.3);
+}
+
+.delete-btn {
+  width: 100%;
+  background: #FFEBEE;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
+  padding: 0.75rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Backup Controls */
+.backup-controls {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.8rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.backup-controls button, .import-label {
+  background: #F1F8E9;
+  border: 1px solid #C8E6C9;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+  color: #2E7D32;
+  transition: all 0.2s;
+  font-size: 0.85rem;
+}
+
+.backup-controls button:hover, .import-label:hover {
+  background: #2E7D32;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .garden-ground::before { width: 96%; height: 85%; top: 8%; }
+  .flower-in-garden .flower-visual, .flower-visual-svg { width: 65px; height: 85px; }
+  .modal, .girl-profile { padding: 1.4rem; margin: 1rem; }
+  .add-flower-btn { bottom: 1rem; right: 1rem; padding: 0.8rem 1.4rem; font-size: 0.9rem; }
+}
